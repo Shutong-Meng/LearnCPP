@@ -264,7 +264,27 @@ C++允许在同一范围中声明几个功能类似的同名函数，但是这�
 
 
 &nbsp;  
-**C++内存分配方式**  
+**内存分配方式**  
+
+
+&nbsp;  
+**内存分配和管理**  
+*malloc & free*  
+malloc：申请指定字节数的内存。申请到的内存中的初始值不确定。  
+
+    char *str = (char*) malloc(100);
+    assert(str != nullptr);  
+    
+    free(p); 
+    p = nullptr; //释放内存后指针置空
+      
+*new & delete*  
+new / new[]：完成两件事，先底层调用malloc分了配内存，然后调用构造函数（创建对象）。  
+delete/delete[]：也完成两件事，先调用析构函数（清理资源），然后底层调用free释放空间。  
+new在申请内存时会自动计算所需字节数，而malloc则需我们自己输入申请内存空间的字节数。  
+
+     T* t = new T();     // 先内存分配 ，再构造函数
+     delete t;           // 先析构函数，再内存释放  
 
 
 &nbsp;  
