@@ -115,6 +115,69 @@ extern "C" 的作用是让C++编译器将extern "C"声明的代码当作C语言�
 
 &nbsp;
 **拷贝构造函数**
+类的对象需要拷贝时，拷贝构造函数将会被调用。以下情况都会调用拷贝构造函数：  
+（1）一个对象以值传递的方式传入函数体  
+（2）一个对象以值传递的方式从函数返回   
+（3）一个对象需要通过另外一个对象进行初始化     
+
+只包含类类型成员或内置类型（但不是指针类型）成员的类，无须显式地定义拷贝构造函数也可以拷贝。
+*有的类有一个数据成员是指针，或者是有成员表示在构造函数中分配的其他资源，这两种情况下都必须定义拷贝构造函数。*  
+
+    class CExample 
+    {
+    private:
+     int a;
+
+    public:
+     //构造函数
+     CExample(int b)
+     { 
+      a = b;
+      cout<<"creat: "<<a<<endl;
+     }
+
+     //拷贝构造
+     CExample(const CExample& C)
+     {
+      a = C.a;
+      cout<<"copy"<<endl;
+     }
+
+     //析构函数
+     ~CExample()
+     {
+      cout<< "delete: "<<a<<endl;
+     }
+
+         void Show ()
+     {
+             cout<<a<<endl;
+         }
+    };
+
+    //全局函数，传入的是对象
+    void g_Fun(CExample C)
+    {
+     cout<<"test"<<endl;
+    }
+
+    int main()
+    {
+     CExample test(1);
+     //传入对象
+     g_Fun(test);
+
+     return 0;
+    }    
+    
+调用g_Fun()时，会产生以下几个重要步骤：  
+(1)test对象传入形参时，会先会产生一个临时变量，就叫C吧。  
+(2)然后调用拷贝构造函数把test的值给C。整个这两个步骤有点像：CExample C(test)； 
+(3)等g_Fun()执行完后，析构掉C对象。  
+    
+    
+&nbsp;
+**引用和指针**
 
 
 &nbsp;
