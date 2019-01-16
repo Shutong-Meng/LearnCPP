@@ -306,3 +306,9 @@ new在申请内存时会自动计算所需字节数，而malloc则需我们自�
 
 不要将一个普通指针赋值给多个智能指针，否则这个指针会被多次删除，而且不会出现报错。　　
 
+*用std::make_shared替代new*  
+std::shared_ptr<MyClass> p(new MyClass("hello",123));两次调用内存管理器：一次创建实例，一次创建隐藏的计数。　　
+std::shared_ptr<MyClass> p=std::make_shared<MyClass>("hello",123);只进行一次内存分配来同时保存实例和计数。　　
+
+
+
