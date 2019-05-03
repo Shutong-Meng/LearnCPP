@@ -40,11 +40,11 @@ column_name3 data_type(size) constraint_name,
 ....
 );  
 *约束*  
-NOT NULL - 指示某列不能存储 NULL 值。  
-UNIQUE - 保证某列的每行必须有唯一的值。每个表可以有多个 UNIQUE 约束，但是每个表只能有一个 PRIMARY KEY 约束。  
-PRIMARY KEY - NOT NULL 和 UNIQUE 的结合。确保某列（或两个列多个列的结合）有唯一标识，有助于更容易更快速地找到表中的一个特定的记录。  
+NOT NULL - 指示某列不能存储NULL值。  
+UNIQUE - 保证某列的每行必须有唯一的值。每个表可以有多个UNIQUE约束，但是每个表只能有一个PRIMARY KEY约束。  
+PRIMARY KEY - NOT NULL和UNIQUE的结合。确保某列（或两个列多个列的结合）有唯一标识，有助于更容易更快速地找到表中的一个特定的记录。  
 ALTER TABLE Persons ADD/DROP PRIMARY KEY (P_Id) 已经创建表后添加或删除primary key约束  
-FOREIGN KEY - 一个表中的 FOREIGN KEY 指向另一个表中的 UNIQUE KEY(唯一约束的键)。保证一个表中的数据匹配另一个表中的值的参照完整性。  
+FOREIGN KEY - 一个表中的FOREIGN KEY指向另一个表中的UNIQUE KEY(唯一约束的键)。保证一个表中的数据匹配另一个表中的值的参照完整性。  
 CREATE TABLE Orders
 (
 O_Id int NOT NULL,
